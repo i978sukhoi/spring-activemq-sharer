@@ -1,6 +1,5 @@
 package com.github.i978sukhoi.spring.activemq.sharer
 
-import org.apache.activemq.command.ActiveMQTextMessage
 import org.slf4j.LoggerFactory
 import org.springframework.jms.core.JmsTemplate
 import org.springframework.jms.listener.DefaultMessageListenerContainer
@@ -51,13 +50,9 @@ class MessageReplicator(
             connectionFactory = jmsTemplate.connectionFactory
             isPubSubDomain = false
             messageListener = MessageListener { message ->
-                if (message is ActiveMQTextMessage) {
-                    val body = message.text
-                    // do replicate message to destinations
-                    for (dest in destinations) jmsTemplate.send(dest) { session ->
-                        session.createTextMessage(body)
-                    }
-                }
+                // do replicate message to destinations
+                for (dest in destinations)
+                    jmsTemplate.send(dest) { message }
             }
             initialize()
             start()
