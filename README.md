@@ -46,7 +46,7 @@ open class SampleAppConfig(
 }
 ```
 
-# usage example
+# working example
 ```kotlin
 @SpringBootApplication
 @EnableJms

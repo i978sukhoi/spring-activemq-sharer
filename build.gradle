@@ -22,7 +22,8 @@ jar.enabled = true
 bootJar.enabled = false
 
 group 'com.github.i978sukhoi'
-version '0.0.1-SNAPSHOT'
+version '1.0.0'
+//version '1.0.1-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
