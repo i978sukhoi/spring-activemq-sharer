@@ -1,8 +1,5 @@
 package com.github.i978sukhoi.spring.activemq.sharer
 
-/**
- * @see SampleAppConfig
- */
 interface SharedQueueRegisterer {
     /**
      * register queue sharing

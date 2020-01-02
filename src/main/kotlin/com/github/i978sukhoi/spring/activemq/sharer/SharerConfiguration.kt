@@ -65,11 +65,10 @@ open class SharerConfiguration(
             require(pack.second.isNotEmpty())
             require(pack.third.isNotEmpty())
             val replicator = sharedChannels.getOrElse(pack.second) {
-                MessageReplicator(jmsTemplate.connectionFactory!!)
-                    .also { instance ->
-                        logger.info("ActiveMQ Sharer: create new replicator '{}'", pack.second)
-                        sharedChannels[pack.second] = instance
-                    }
+                MessageReplicator(jmsTemplate.connectionFactory!!).also { instance ->
+                    logger.info("ActiveMQ Sharer: create new replicator '{}'", pack.second)
+                    sharedChannels[pack.second] = instance
+                }
             }
             replicator.handleConfigurationEvent(pack)
         }
